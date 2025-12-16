@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportNewsID - Berita Olahraga Terkini</title>
+    <link rel="stylesheet" href="/src/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- Header & Navigasi -->
+        <header class="main-header">
+            <div class="container header-container">
+                <a href="/" class="logo-link">
+                    <i class="fas fa-futbol logo-icon"></i>
+                    <div>
+                        <h1 class="logo-title">SportNews<span class="logo-highlight">ID</span></h1>
+                        <p class="logo-tagline" data-i18n="header.tagline">#1 Sumber Berita Olahraga</p>
+                    </div>
+                </a>
+
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="#" class="nav-link active" data-category="all" data-i18n="nav.all">Semua</a></li>
+                        <li><a href="#" class="nav-link" data-category="football" data-i18n="nav.football">Sepak Bola</a></li>
+                        <li><a href="#" class="nav-link" data-category="basketball" data-i18n="nav.basketball">Bola Basket</a></li>
+                        <li><a href="#" class="nav-link" data-category="badminton" data-i18n="nav.badminton">Bulu Tangkis</a></li>
+                        <li><a href="#" class="nav-link" data-category="esports" data-i18n="nav.esports">E-Sports</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-controls">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="id" aria-label="Switch to Indonesian">
+                            <img src="https://flagcdn.com/w20/id.png" alt="ID" class="flag-icon"> ID
+                        </button>
+                        <button class="lang-btn" data-lang="en" aria-label="Switch to English">
+                            <img src="https://flagcdn.com/w20/gb.png" alt="EN" class="flag-icon"> EN
+                        </button>
+                    </div>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h2 class="hero-title" data-i18n="hero.title">Berita Olahraga <span class="text-gradient">Terkini</span> dari Seluruh Dunia</h2>
+                    <p class="hero-subtitle" data-i18n="hero.subtitle">Jelajahi liputan mendalam, hasil pertandingan, analisis, dan berita terbaru dari dunia sepak bola, bulu tangkis, basket, e-sports, dan banyak lagi.</p>
+                    <div class="search-container">
+                        <div class="search-box">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" id="searchInput" class="search-input" placeholder="Cari berita olahraga..." data-i18n-ph="search.placeholder">
+                            <button id="searchBtn" class="search-btn" data-i18n="search.button">Cari</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Konten Utama -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Filter Kategori -->
+                <section class="category-section">
+                    <h3 class="section-title" data-i18n="categories.title">Jelajahi Kategori</h3>
+                    <div class="category-filters">
+                        <button class="category-filter active" data-category="all" data-i18n="categories.all">Semua</button>
+                        <button class="category-filter" data-category="football" data-i18n="categories.football">
+                            <i class="fas fa-futbol"></i> Sepak Bola
+                        </button>
+                        <button class="category-filter" data-category="basketball" data-i18n="categories.basketball">
+                            <i class="fas fa-basketball-ball"></i> Bola Basket
+                        </button>
+                        <button class="category-filter" data-category="badminton" data-i18n="categories.badminton">
+                            <i class="fas fa-table-tennis"></i> Bulu Tangkis
+                        </button>
+                        <button class="category-filter" data-category="esports" data-i18n="categories.esports">
+                            <i class="fas fa-gamepad"></i> E-Sports
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Loading Indicator -->
+                <div id="loadingIndicator" class="loading-indicator">
+                    <div class="spinner"></div>
+                    <p data-i18n="loading.text">Memuat berita...</p>
+                </div>
+
+                <!-- Grid Berita -->
+                <section class="news-section">
+                    <div id="newsContainer" class="news-grid">
+                        <!-- Berita akan dimuat di sini oleh JavaScript -->
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="emptyState" class="empty-state hidden">
+                        <i class="fas fa-newspaper empty-icon"></i>
+                        <h3 data-i18n="empty.title">Tidak ada berita ditemukan</h3>
+                        <p data-i18n="empty.message">Coba gunakan kata kunci pencarian yang berbeda atau pilih kategori lain.</p>
+                    </div>
+                </section>
+
+                <!-- Tombol Load More -->
+                <div class="load-more-container">
+                    <button id="loadMoreBtn" class="load-more-btn" data-i18n="loadmore.button">
+                        <span>Muat Lebih Banyak</span>
+                        <i class="fas fa-arrow-down"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <i class="fas fa-futbol"></i>
+                            <h3>SportNews<span>ID</span></h3>
+                        </div>
+                        <p class="footer-description" data-i18n="footer.description">Platform berita olahraga terpercaya yang menyajikan informasi terkini, akurat, dan mendalam dari berbagai cabang olahraga.</p>
+                        <div class="footer-social">
+                            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="footer-links">
+                        <h4 data-i18n="footer.links.title">Tautan Cepat</h4>
+                        <ul class="footer-nav">
+                            <li><a href="#" data-i18n="footer.links.home">Beranda</a></li>
+                            <li><a href="#" data-i18n="footer.links.about">Tentang Kami</a></li>
+                            <li><a href="#" data-i18n="footer.links.contact">Kontak</a></li>
+                            <li><a href="#" data-i18n="footer.links.privacy">Kebijakan Privasi</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-newsletter">
+                        <h4 data-i18n="footer.newsletter.title">Berlangganan Newsletter</h4>
+                        <p data-i18n="footer.newsletter.subtitle">Dapatkan ringkasan berita olahraga langsung ke inbox Anda.</p>
+                        <div class="newsletter-form">
+                            <input type="email" class="newsletter-input" placeholder="Alamat email Anda" data-i18n-ph="footer.newsletter.placeholder">
+                            <button class="newsletter-btn" data-i18n="footer.newsletter.button">Kirim</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p class="copyright" data-i18n="footer.copyright">© 2023 SportNewsID. Semua hak dilindungi.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/src/app.js"></script>
+</body>
+</html>
